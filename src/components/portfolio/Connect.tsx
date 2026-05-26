@@ -2,19 +2,30 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Mail, Github, Linkedin, Phone, Send, Code2 } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
-import emailjs from "@emailjs/browser";
+
+let emailjs: any;
 
 export function Connect() {
   const [sent, setSent] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
 
+    if (typeof window !== "undefined") {
+      const emailjsModule = await import("@emailjs/browser");
+      emailjs = emailjsModule.default;
+    }
+
     if (form.current) {
       emailjs
-        .sendForm("service_f8afu3o", "template_95i7vnl", form.current, "sEe9TBYsjqzoAhra9")
+        .sendForm(
+          "service_f8afu3o",
+          "template_95i7vnl",
+          form.current,
+          "sEe9TBYsjqzoAhra9"
+        )
         .then(
           () => {
             console.log("SUCCESS!");
@@ -23,10 +34,10 @@ export function Connect() {
               form.current?.reset();
             }, 2500);
           },
-          (error) => {
+          (error: any) => {
             console.log("FAILED...", error.text);
             setSent(false);
-          },
+          }
         );
     }
   };
