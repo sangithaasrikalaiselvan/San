@@ -1,22 +1,41 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Mail, Github, Linkedin, Phone, Send, Code2 } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
+import emailjs from "@emailjs/browser";
 
 export function Connect() {
   const [sent, setSent] = useState(false);
-  const submit = (e: React.FormEvent) => {
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
-    setTimeout(() => setSent(false), 2500);
+
+    if (form.current) {
+      emailjs
+        .sendForm("service_f8afu3o", "template_95i7vnl", form.current, "sEe9TBYsjqzoAhra9")
+        .then(
+          () => {
+            console.log("SUCCESS!");
+            setTimeout(() => {
+              setSent(false);
+              form.current?.reset();
+            }, 2500);
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+            setSent(false);
+          },
+        );
+    }
   };
 
   const socials = [
-    { Icon: Mail, label: "sangithaa@example.com", href: "mailto:sangithaa@example.com" },
-    { Icon: Github, label: "github.com/sangithaa", href: "https://github.com" },
-    { Icon: Linkedin, label: "linkedin.com/in/sangithaa", href: "https://linkedin.com" },
-    { Icon: Phone, label: "+91 XXXXX XXXXX", href: "tel:+91" },
-    { Icon: Code2, label: "leetcode.com/sangithaa", href: "https://leetcode.com" },
+    { name: "Gmail", Icon: Mail, label: "sangithaasrik7@gmail.com", href: "mailto:sangithaasrik7@gmail.com" },
+    { name: "GitHub", Icon: Github, label: "github.com/sangithaasrikalaiselvan", href: "https://github.com/sangithaasrikalaiselvan" },
+    { name: "LinkedIn", Icon: Linkedin, label: "linkedin.com/in/sangithaa-sri-k-6b53562ab", href: "https://www.linkedin.com/in/sangithaa-sri-k-6b53562ab/" },
+    { name: "Phone", Icon: Phone, label: "+91 9361528364", href: "tel:+919361528364" },
   ];
 
   return (
@@ -31,6 +50,7 @@ export function Connect() {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
+            <p className="text-muted-foreground mb-4">Find me on:</p>
             {socials.map((s, i) => (
               <motion.a
                 key={s.label}
@@ -47,13 +67,17 @@ export function Connect() {
                 >
                   <s.Icon className="h-5 w-5 text-background" />
                 </div>
-                <span className="font-mono text-sm">{s.label}</span>
+                <div className="flex flex-col">
+                  <span className="font-semibold">{s.name}</span>
+                  <span className="font-mono text-sm text-muted-foreground">{s.label}</span>
+                </div>
               </motion.a>
             ))}
           </motion.div>
 
           <motion.form
-            onSubmit={submit}
+            ref={form}
+            onSubmit={sendEmail}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -61,13 +85,14 @@ export function Connect() {
             className="space-y-4 rounded-2xl glass-strong neon-border p-6"
           >
             {[
-              { name: "name", placeholder: "Your name", type: "text" },
-              { name: "email", placeholder: "Your email", type: "email" },
+              { name: "user_name", placeholder: "Your name", type: "text" },
+              { name: "user_email", placeholder: "Your email", type: "email" },
             ].map((f) => (
               <input
                 key={f.name}
                 required
                 type={f.type}
+                name={f.name}
                 placeholder={f.placeholder}
                 className="w-full rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none transition-all focus:border-[oklch(0.85_0.18_195)] focus:glow-cyan"
               />
@@ -75,6 +100,7 @@ export function Connect() {
             <textarea
               required
               rows={5}
+              name="message"
               placeholder="Tell me about your project…"
               className="w-full resize-none rounded-xl border border-border bg-background/40 px-4 py-3 text-sm outline-none transition-all focus:border-[oklch(0.85_0.18_195)] focus:glow-cyan"
             />

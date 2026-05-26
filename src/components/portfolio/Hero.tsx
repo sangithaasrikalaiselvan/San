@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Download, Mail, Github, Linkedin, Code2 } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/san.png";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const ROLES = [
   "AI & Data Science Engineer",
@@ -44,6 +52,8 @@ export function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+  const resumeUrl = "/assets/Sangithaa Sri K - Resume.pdf";
+
   return (
     <section id="hero" className="relative flex min-h-screen items-center overflow-hidden pt-24">
       {/* Floating blobs */}
@@ -73,12 +83,11 @@ export function Hero() {
             >
               <img src={profileImg} alt="Sangithaa Sri K" className="aspect-[4/5] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl glass px-4 py-2 text-xs font-mono">
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-center rounded-xl glass px-4 py-2 text-xs font-mono">
                 <span className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Available for hire
+                  Open to work
                 </span>
-                <span className="text-gradient-neon">v2026</span>
               </div>
             </motion.div>
           </div>
@@ -93,7 +102,7 @@ export function Hero() {
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-[11px] font-mono tracking-[0.3em] uppercase">
             <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.85_0.18_195)] animate-pulse" />
-            <span className="text-gradient-neon">Hello, world</span>
+            <span className="text-gradient-neon">Agentic AI Engineer</span>
           </div>
           <h1 className="text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
             I'm <span className="text-gradient">Sangithaa Sri K</span>
@@ -104,21 +113,39 @@ export function Hero() {
             <span className="inline-block h-6 w-[2px] animate-pulse bg-[oklch(0.85_0.18_195)]" />
           </div>
           <p className="mt-6 max-w-xl text-muted-foreground">
-            I architect intelligent systems at the intersection of machine learning, agentic AI, and
-            production-grade engineering — turning research into reliable, human-centric products.
+            I engineer intelligent systems that think, adapt, and evolve — transforming AI research
+            into scalable real-world innovation through agentic intelligence, machine learning, and
+            human-centric engineering.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="https://drive.google.com/file/d/19m9SgfzVJNwnouFXlcJG_CfGm501p8xL/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground glow-cyan transition-transform hover:scale-105"
-              style={{ background: "var(--gradient-neon)" }}
-            >
-              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Download Resume
-            </a>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  size="sm"
+                  className="group inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-primary-foreground glow-cyan transition-transform hover:scale-105"
+                  style={{ background: "var(--gradient-neon)" }}
+                >
+                  Resume
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="w-[95vw] max-w-[95vw] h-[95vh]">
+                <DialogHeader>
+                  <DialogTitle>Sangithaa Sri K - Resume</DialogTitle>
+                </DialogHeader>
+                <div className="h-full w-full rounded-lg overflow-hidden">
+                  <iframe src={resumeUrl} className="h-full w-full" />
+                </div>
+                <div className="absolute bottom-4 right-4">
+                  <Button size="sm" asChild>
+                    <a href={resumeUrl} download="Sangithaa Sri K - Resume.pdf">
+                      <Download className="mr-2 h-3 w-3" />
+                      Download
+                    </a>
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
             <button
               onClick={() => scrollTo("connect")}
               className="inline-flex items-center gap-2 rounded-full glass neon-border px-6 py-3 text-sm font-semibold transition-transform hover:scale-105"
@@ -129,10 +156,9 @@ export function Hero() {
 
           <div className="mt-8 flex items-center gap-3">
             {[
-              { Icon: Github, href: "https://github.com", label: "GitHub" },
-              { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-              { Icon: Mail, href: "mailto:sangithaa@example.com", label: "Email" },
-              { Icon: Code2, href: "https://leetcode.com", label: "LeetCode" },
+              { Icon: Github, href: "https://github.com/sangithaasrikalaiselvan", label: "GitHub" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/sangithaa-sri-k-6b53562ab/", label: "LinkedIn" },
+              { Icon: Mail, href: "mailto:sangithaasrik7@gmail.com", label: "Email" },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}

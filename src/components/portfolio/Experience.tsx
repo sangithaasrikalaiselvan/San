@@ -3,9 +3,19 @@ import { useState } from "react";
 import { Briefcase, ChevronDown, Calendar } from "lucide-react";
 import { experiences } from "@/lib/data";
 import { SectionHeader } from "./SectionHeader";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export function Experience() {
   const [open, setOpen] = useState<number | null>(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section id="experience" className="relative px-6 py-24">
       <div className="mx-auto max-w-4xl">
@@ -63,8 +73,52 @@ export function Experience() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.35 }}
                         >
-                          <div className="border-t border-border/60 px-5 pb-6 pt-4 text-muted-foreground">
-                            {e.details}
+                          <div className="border-t border-border/60 px-5 pb-6 pt-4">
+                            <p className="text-muted-foreground">{e.details}</p>
+                            <div className="mt-4 flex gap-4">
+                              {e.certificate && (
+                                <Dialog>
+                                  <DialogTrigger asChild>
+                                    <Button
+                                      variant="outline"
+                                      size="sm"
+                                      className="gap-1.5"
+                                      onClick={() => setSelectedImage(e.certificate)}
+                                    >
+                                      View Certificate
+                                    </Button>
+                                  </DialogTrigger>
+                                  {selectedImage === e.certificate && (
+                                    <DialogContent className="sm:max-w-[800px]">
+                                      <DialogHeader>
+                                        <DialogTitle>{e.role} Certificate</DialogTitle>
+                                      </DialogHeader>
+                                      <div className="flex items-center justify-center">
+                                        <img
+                                          src={e.certificate}
+                                          alt={`${e.role} Certificate`}
+                                          className="max-h-[80vh] w-auto"
+                                        />
+                                      </div>
+                                    </DialogContent>
+                                  )}
+                                </Dialog>
+                              )}
+                              {e.linkedin && (
+                                <Button asChild variant="outline" size="sm" className="gap-1.5">
+                                  <a href={e.linkedin} target="_blank">
+                                    View on LinkedIn
+                                  </a>
+                                </Button>
+                              )}
+                              {e.projectLink && (
+                                <Button asChild variant="outline" size="sm" className="gap-1.5">
+                                  <a href={e.projectLink} target="_blank">
+                                    View Project
+                                  </a>
+                                </Button>
+                              )}
+                            </div>
                           </div>
                         </motion.div>
                       )}

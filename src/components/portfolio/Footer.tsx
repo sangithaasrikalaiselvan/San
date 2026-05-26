@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart, Code2 } from "lucide-react";
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,14 +9,13 @@ export function Footer() {
       />
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">
         <div className="font-mono text-xs tracking-[0.3em] text-muted-foreground">
-          © 2026 SANGITHAA SRI K · BUILT WITH <Heart className="inline h-3 w-3 text-[oklch(0.7_0.25_340)]" /> &amp; AI
+          SAN
         </div>
         <div className="flex items-center gap-3">
           {[
-            { Icon: Github, href: "https://github.com" },
-            { Icon: Linkedin, href: "https://linkedin.com" },
-            { Icon: Mail, href: "mailto:sangithaa@example.com" },
-            { Icon: Code2, href: "https://leetcode.com" },
+            { Icon: Github, href: "https://github.com/sangithaasrikalaiselvan" },
+            { Icon: Linkedin, href: "https://www.linkedin.com/in/sangithaa-sri-k-6b53562ab/" },
+            { Icon: Mail, href: "mailto:sangithaasrik7@gmail.com" },
           ].map(({ Icon, href }, i) => (
             <a
               key={i}

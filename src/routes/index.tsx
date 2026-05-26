@@ -19,13 +19,13 @@ import { BackToTop } from "@/components/portfolio/BackToTop";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sangithaa Sri K — AI & Data Science Engineer" },
+      { title: "San-Agentic AI Engineer" },
       {
         name: "description",
         content:
-          "Portfolio of Sangithaa Sri K — AI & Data Science Engineer, ML developer, and agentic AI builder. Projects, hackathons, and credentials.",
+          "Portfolio of San-Agentic AI Engineer, ML developer, and agentic AI builder. Projects, hackathons, and credentials.",
       },
-      { property: "og:title", content: "Sangithaa Sri K — AI & Data Science Engineer" },
+      { property: "og:title", content: "San-Agentic AI Engineer" },
       {
         property: "og:description",
         content: "Award-winning AI/ML engineer portfolio. Projects, hackathons, certifications, and more.",

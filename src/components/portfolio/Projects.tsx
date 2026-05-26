@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown, Sparkles, ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 import { SectionHeader } from "./SectionHeader";
+import { Button } from "@/components/ui/button";
 
 export function Projects() {
   const [open, setOpen] = useState<number | null>(0);
@@ -61,7 +62,7 @@ export function Projects() {
                     >
                       <div className="border-t border-border/60 px-5 pb-6 pt-5">
                         <p className="text-muted-foreground">{p.description}</p>
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-4 flex flex-wrap items-center gap-2">
                           {p.tags.map((t) => (
                             <span
                               key={t}
@@ -70,6 +71,12 @@ export function Projects() {
                               {t}
                             </span>
                           ))}
+                          <Button asChild variant="outline" size="sm" className="ml-auto gap-1.5">
+                            <a href={p.link} target="_blank">
+                              {p.linkText || "View Project"}
+                              <ArrowUpRight className="h-4 w-4" />
+                            </a>
+                          </Button>
                         </div>
                       </div>
                     </motion.div>
