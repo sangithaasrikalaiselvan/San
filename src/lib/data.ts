@@ -1,12 +1,76 @@
 export const certifications = [
-  { title: "Introduction to AI Concepts", issuer: "Microsoft", color: "#00A4EF" },
-  { title: "Describe Cloud Computing", issuer: "Microsoft", color: "#00A4EF" },
-  { title: "Backend Web Development", issuer: "AWS", color: "#FF9900" },
-  { title: "C++ Premier", issuer: "Infosys", color: "#007CC3" },
-  { title: "Introduction to MongoDB", issuer: "MongoDB", color: "#13AA52" },
-  { title: "International Conference", issuer: "ICAICS Startup", color: "#a78bfa" },
-  { title: "Python for Data Science", issuer: "NPTEL", color: "#FFCB05" },
-  { title: "Design Thinking", issuer: "NPTEL", color: "#FFCB05" },
+  {
+    title: "Introduction to AI Concepts",
+    issuer: "Microsoft",
+    color: "#00A4EF",
+    link: "https://drive.google.com/file/d/1PsU53D4a_Q9k1gQ59-j6k8y1wzL2kk9l/view?usp=sharing",
+  },
+  {
+    title: "Describe Cloud Computing",
+    issuer: "Microsoft",
+    color: "#00A4EF",
+    link: "https://drive.google.com/file/d/1tUR6TuHxEfVHV853rfJeLIFSptMiZvaZ/view?usp=sharing",
+  },
+  {
+    title: "Oracle Certified Professional",
+    issuer: "Oracle",
+    color: "#F80000",
+    link: "https://drive.google.com/file/d/1jGav3PI5TE9qYCzRnFD5SQPTeneDN6lI/view?usp=sharing",
+  },
+  {
+    title: "Backend Web Development",
+    issuer: "AWS",
+    color: "#FF9900",
+    link: "https://drive.google.com/file/d/176VRKT4xJhTvw-LAEuQ71zER6MaVMv2y/view?usp=sharing",
+  },
+  {
+    title: "C++ Premier",
+    issuer: "Infosys",
+    color: "#007CC3",
+    link: "https://drive.google.com/file/d/1_VQ82yVPFLhZFpN5UWgyiB6TOuZmDNgx/view?usp=sharing",
+  },
+  {
+    title: "Introduction to MongoDB",
+    issuer: "MongoDB",
+    color: "#13AA52",
+    link: "https://drive.google.com/file/d/1D-IQBd-YlY6QoAxqj6JOTq7Qt1YdkhCS/view?usp=sharing",
+  },
+  {
+    title: "International Conference",
+    issuer: "ICAICS Startup",
+    color: "#a78bfa",
+    link: "https://www.linkedin.com/posts/sangithaa-sri-k-6b53562ab_conference-icaics-deepfake-activity-7317929945689661440-ACVa?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEqf1WkBb_atwaF2VXMuMDAx-GktCFHBPq0",
+  },
+  {
+    title: "National Conference",
+    issuer: "NCICT'26",
+    color: "#a78bfa",
+    link: "https://www.linkedin.com/posts/sangithaa-sri-k-6b53562ab_research-ai-healthcareinnovation-activity-7452691127121395713-OiMI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEqf1WkBb_atwaF2VXMuMDAx-GktCFHBPq0",
+  },
+  {
+    title: "Python for Data Science",
+    issuer: "NPTEL",
+    color: "#FFCB05",
+    link: "https://drive.google.com/file/d/1ZBK4Ejb3qtHMGjubxVWD5LQVskWQL4de/view?usp=sharing",
+  },
+  {
+    title: "Cloud Computing",
+    issuer: "NPTEL",
+    color: "#FFCB05",
+    link: "https://drive.google.com/file/d/1kdNQWDPqks1wuVOdbRUr1oRCgbfvv-3y/view?usp=sharing",
+  },
+  {
+    title: "Design Thinking A Primier",
+    issuer: "NPTEL",
+    color: "#FFCB05",
+    link: "https://drive.google.com/file/d/1i3wlT7Q_gOenjblzKT22SjuX4n2YcMw8/view?usp=sharing",
+  },
+  {
+    title: "Geographic Information Systems",
+    issuer: "NPTEL",
+    color: "#FFCB05",
+    link: "https://drive.google.com/file/d/1-OAPthAFZCONavv9m_YvUH50uKcBvPA1/view?usp=sharing",
+  },
 ];
 
 export const achievements = [

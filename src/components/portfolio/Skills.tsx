@@ -26,7 +26,7 @@ function SkillCard({ name, level, icon, i }: { name: string; level: number; icon
             fill="none"
             strokeDasharray={C}
             initial={{ strokeDashoffset: C }}
-            whileInView={{ strokeDashoffset: C - (C * level) / 100 }}
+            whileInView={{ strokeDashoffset: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: i * 0.05 }}
           />
@@ -43,7 +43,6 @@ function SkillCard({ name, level, icon, i }: { name: string; level: number; icon
       </div>
       <div className="min-w-0">
         <div className="font-semibold">{name}</div>
-        <div className="font-mono text-xs text-muted-foreground">{level}%</div>
       </div>
     </motion.div>
   );
